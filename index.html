@@ -12,7 +12,7 @@
       --border: #1f2933;
       --text: #e5e7eb;
       --muted: #9ca3af;
-      --accent: #22d3ee; /* teal */
+      --accent: #22d3ee;
     }
     * { box-sizing: border-box; }
 
@@ -32,72 +32,76 @@
     header span { color: var(--muted); font-weight: 400; }
 
     .tabs {
-      display: flex;
-      gap: .5rem;
-      padding: .55rem 1rem;
-      border-bottom: 1px solid var(--border);
-      background: var(--bg);
-      overflow-x: auto;
+      display:flex;
+      gap:.5rem;
+      padding:.55rem 1rem;
+      border-bottom:1px solid var(--border);
+      background:var(--bg);
+      overflow-x:auto;
     }
     .tabs button {
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #020617;
-      color: var(--muted);
-      padding: .4rem .9rem;
-      font-size: .8rem;
-      cursor: pointer;
-      white-space: nowrap;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#020617;
+      color:var(--muted);
+      padding:.4rem .9rem;
+      font-size:.8rem;
+      cursor:pointer;
+      white-space:nowrap;
     }
     .tabs button.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #020617;
-      font-weight: 600;
+      background:var(--accent);
+      border-color:var(--accent);
+      color:#020617;
+      font-weight:600;
     }
 
     main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1rem .9rem 3rem;
+      max-width:1100px;
+      margin:0 auto;
+      padding:1rem .9rem 3rem;
     }
-    section { display: none; }
-    section.active { display: block; }
+    section { display:none; }
+    section.active { display:block; }
 
     .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.1rem 1.1rem 1.3rem;
-      margin-bottom: 1.2rem;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:1rem;
+      padding:1.1rem 1.1rem 1.3rem;
+      margin-bottom:1.2rem;
     }
     .card h2 {
-      margin: 0 0 .4rem;
-      font-size: 1rem;
+      margin:0 0 .4rem;
+      font-size:1rem;
+    }
+    .card p {
+      margin:0;
+      font-size:.85rem;
+      color:var(--muted);
     }
 
-    /* Converter */
+    /* Converter box */
     .conv-wrap {
-      background: #020617;
-      border-radius: 1.3rem;
-      padding: 1.3rem;
-      border: 1px solid #1f2937;
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-      max-width: 480px;
-      margin: 0 auto 1.4rem;
+      max-width:480px;
+      margin:0 auto 1.5rem;
+      background:#020617;
+      border-radius:1.3rem;
+      border:1px solid #1f2937;
+      box-shadow:0 0 25px rgba(0,0,0,0.6);
+      padding:1.3rem;
     }
     .conv-inner {
-      background: #ffffff;
-      border-radius: 1rem;
-      padding: 1.1rem 1.1rem 1.3rem;
+      background:#ffffff;
+      border-radius:1rem;
+      padding:1.1rem 1.1rem 1.3rem;
     }
     .conv-inner h2 {
-      margin: 0 0 .7rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #0f172a;
+      margin:0 0 .7rem;
+      font-size:1.1rem;
+      font-weight:700;
+      color:#0f172a;
     }
-
     label {
       display:block;
       font-size:.8rem;
@@ -114,7 +118,6 @@
       background:#f8fafc;
       color:#0f172a;
     }
-
     .swap-wrap {
       display:flex;
       justify-content:center;
@@ -132,7 +135,6 @@
       font-size:.8rem;
       color:#64748b;
     }
-
     .btn {
       margin-top:.8rem;
       width:100%;
@@ -145,7 +147,6 @@
       font-size:.95rem;
       cursor:pointer;
     }
-
     #conv-output {
       margin-top:.9rem;
       font-size:1.15rem;
@@ -160,10 +161,10 @@
 
     /* Chart */
     .chart-box {
-      height: 420px;
-      border-radius: 1rem;
-      overflow: hidden;
-      border: 1px solid var(--border);
+      height:420px;
+      border-radius:1rem;
+      overflow:hidden;
+      border:1px solid var(--border);
     }
     .chart-header {
       display:flex;
@@ -186,7 +187,7 @@
     /* Prices */
     table {
       width:100%;
-      border-collapse: collapse;
+      border-collapse:collapse;
       margin-top:.6rem;
       font-size:.8rem;
     }
@@ -205,6 +206,11 @@
       border-radius:1rem;
       background:white;
     }
+
+    @media(max-width:600px){
+      header { font-size:.85rem; }
+      .conv-wrap { margin-inline:-.2rem; }
+    }
   </style>
 </head>
 <body>
@@ -222,7 +228,7 @@
 
 <main>
 
-  <!-- HOME -->
+  <!-- HOME / CONVERTER -->
   <section id="home" class="active">
     <div class="conv-wrap">
       <div class="conv-inner">
@@ -278,14 +284,14 @@
           <option value="FX:USDJPY">USDJPY</option>
           <option value="FX:USDCHF">USDCHF</option>
           <option value="FX:USDCAD">USDCAD</option>
-          <option value="FX:AUDUSD">AUDUSD</button>
+          <option value="FX:AUDUSD">AUDUSD</option>
           <option value="FX:NZDUSD">NZDUSD</option>
         </select>
       </div>
-
       <div class="chart-box">
         <iframe id="tv-iframe"
-          src="https://s.tradingview.com/embed-widget/advanced-chart/?theme=dark&style=1&symbol=FX:EURUSD&interval=60&hide_top_toolbar=true&hide_legend=true">
+          src="https://s.tradingview.com/embed-widget/advanced-chart/?theme=dark&style=1&symbol=FX:EURUSD&interval=60&hide_top_toolbar=true&hide_legend=true"
+          style="width:100%;height:100%;border:none;">
         </iframe>
       </div>
     </div>
@@ -295,9 +301,7 @@
   <section id="prices">
     <div class="card">
       <h2>Live Prices – FX Majors</h2>
-      <p style="font-size:.85rem;color:var(--muted);">
-        Auto-updates every 20 seconds (Frankfurter API – EUR base).
-      </p>
+      <p>Auto-updates every 20 seconds (Frankfurter API, base USD).</p>
       <table id="fx-table">
         <tr><th>Pair</th><th>Price</th></tr>
       </table>
@@ -308,18 +312,16 @@
   <section id="calendar">
     <div class="card">
       <h2>Economic Calendar</h2>
-      <p style="font-size:.85rem;color:var(--muted);">
-        Powered by Investing.com — Full desktop version.
-      </p>
+      <p>TradingEconomics calendar – clean, embeddable, global.</p>
       <div class="calendar-wrap" style="margin-top:1rem;">
-        <iframe src="https://www.investing.com/economic-calendar/"></iframe>
+        <iframe src="https://calendar.tradingeconomics.com/"></iframe>
       </div>
     </div>
   </section>
 
 </main>
 
-<!-- TAB SCRIPT -->
+<!-- TABS -->
 <script>
   const tabButtons = document.querySelectorAll(".tabs button");
   const sections = document.querySelectorAll("main section");
@@ -359,7 +361,6 @@ async function convert() {
     const res = await fetch(url);
     if (!res.ok) throw new Error("Bad response");
     const data = await res.json();
-
     const price = data.rates[to];
     out.textContent = `${amount.toFixed(2)} ${from} = ${price.toFixed(4)} ${to}`;
     meta.textContent = `Rate: ${(price/amount).toFixed(6)} · Source: frankfurter.app`;
@@ -372,9 +373,9 @@ async function convert() {
 function swapCurrencies() {
   const fromSel = document.getElementById('from');
   const toSel = document.getElementById('to');
-  const temp = fromSel.value;
+  const tmp = fromSel.value;
   fromSel.value = toSel.value;
-  toSel.value = temp;
+  toSel.value = tmp;
 }
 </script>
 
@@ -393,20 +394,32 @@ function updateChart() {
 
 <!-- LIVE PRICES -->
 <script>
-const fxPairs = ["EURUSD","EURGBP","EURJPY","EURCHF","EURAUD","EURCAD","EURNZD"];
+const fxPairs = ["EURUSD","GBPUSD","USDJPY","USDCHF","USDCAD","AUDUSD","NZDUSD"];
 
 async function loadFXTable() {
   try {
-    const res = await fetch("https://api.frankfurter.app/latest?from=EUR");
+    const res = await fetch("https://api.frankfurter.app/latest?base=USD");
+    if (!res.ok) throw new Error("Bad response");
     const data = await res.json();
     const rates = data.rates || {};
     const table = document.getElementById("fx-table");
-
     table.innerHTML = `<tr><th>Pair</th><th>Price</th></tr>`;
 
-    fxPairs.forEach(pair => {
+    fxPairs.forEach(pair=>{
+      const base = pair.slice(0,3);
       const quote = pair.slice(3);
-      const price = rates[quote];
+      let price;
+
+      if (base === "USD") {
+        // e.g. USDJPY = JPY rate directly
+        price = rates[quote];
+      } else if (quote === "USD") {
+        // e.g. EURUSD = 1 / EUR rate
+        price = 1 / rates[base];
+      } else {
+        // cross (not really used in this list)
+        price = (1 / rates[base]) * rates[quote];
+      }
       if (!price) return;
 
       table.innerHTML += `
@@ -415,18 +428,15 @@ async function loadFXTable() {
           <td>${price.toFixed(5)}</td>
         </tr>`;
     });
-  } catch (e) {
-    const table = document.getElementById("fx-table");
-    table.innerHTML = `
-      <tr><th>Pair</th><th>Price</th></tr>
+
+  } catch(e) {
+    const t = document.getElementById("fx-table");
+    t.innerHTML = `<tr><th>Pair</th><th>Price</th></tr>
       <tr><td colspan="2">Error loading prices.</td></tr>`;
   }
 }
 
-// initial load
 loadFXTable();
-
-// auto-refresh
 setInterval(loadFXTable, 20000);
 </script>
 
