@@ -1,218 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YourBrand.ai – FX Intelligence</title>
-  <style>
-    :root {
-      --bg: #020617;
-      --bg2: #050816;
-      --card: #020617;
-      --border: #1f2933;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #22d3ee;
-    }
-    * { box-sizing: border-box; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YourBrand.ai – FX Intelligence</title>
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI";
-      background: var(--bg2);
-      color: var(--text);
-    }
-    header {
-      padding: .9rem 1.3rem;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      font-weight: 600;
-      font-size: .95rem;
-    }
-    header span { color: var(--muted); font-weight: 400; }
+<style>
+  :root {
+    --bg: #020617;
+    --bg2: #050816;
+    --card: #020617;
+    --border: #1f2933;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #22d3ee;
+  }
+  * { box-sizing: border-box; }
 
-    .tabs {
-      display:flex;
-      gap:.5rem;
-      padding:.55rem 1rem;
-      border-bottom:1px solid var(--border);
-      background:var(--bg);
-      overflow-x:auto;
-    }
-    .tabs button {
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:#020617;
-      color:var(--muted);
-      padding:.4rem .9rem;
-      font-size:.8rem;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-    .tabs button.active {
-      background:var(--accent);
-      border-color:var(--accent);
-      color:#020617;
-      font-weight:600;
-    }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI";
+    background: var(--bg2);
+    color: var(--text);
+  }
 
-    main {
-      max-width:1100px;
-      margin:0 auto;
-      padding:1rem .9rem 3rem;
-    }
-    section { display:none; }
-    section.active { display:block; }
+  header {
+    padding: .9rem 1.3rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    font-size: .95rem;
+  }
+  header span { color: var(--muted); font-weight: 400; }
 
-    .card {
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:1rem;
-      padding:1.1rem 1.1rem 1.3rem;
-      margin-bottom:1.2rem;
-    }
-    .card h2 {
-      margin:0 0 .4rem;
-      font-size:1rem;
-    }
-    .card p {
-      margin:0;
-      font-size:.85rem;
-      color:var(--muted);
-    }
+  .tabs {
+    display:flex;
+    gap:.5rem;
+    padding:.55rem 1rem;
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    overflow-x:auto;
+  }
 
-    /* Converter box */
-    .conv-wrap {
-      max-width:480px;
-      margin:0 auto 1.5rem;
-      background:#020617;
-      border-radius:1.3rem;
-      border:1px solid #1f2937;
-      box-shadow:0 0 25px rgba(0,0,0,0.6);
-      padding:1.3rem;
-    }
-    .conv-inner {
-      background:#ffffff;
-      border-radius:1rem;
-      padding:1.1rem 1.1rem 1.3rem;
-    }
-    .conv-inner h2 {
-      margin:0 0 .7rem;
-      font-size:1.1rem;
-      font-weight:700;
-      color:#0f172a;
-    }
-    label {
-      display:block;
-      font-size:.8rem;
-      font-weight:600;
-      margin-bottom:.2rem;
-      color:#475569;
-    }
-    input, select {
-      width:100%;
-      padding:.6rem;
-      border-radius:.7rem;
-      border:1px solid #cbd5e1;
-      font-size:.95rem;
-      background:#f8fafc;
-      color:#0f172a;
-    }
-    .swap-wrap {
-      display:flex;
-      justify-content:center;
-      margin:.6rem 0 .8rem;
-    }
-    .swap-btn {
-      display:flex;
-      align-items:center;
-      gap:.3rem;
-      border-radius:999px;
-      border:1px solid #e2e8f0;
-      padding:.35rem .9rem;
-      background:#fff;
-      cursor:pointer;
-      font-size:.8rem;
-      color:#64748b;
-    }
-    .btn {
-      margin-top:.8rem;
-      width:100%;
-      background:var(--accent);
-      border:none;
-      border-radius:.7rem;
-      padding:.7rem;
-      color:#020617;
-      font-weight:600;
-      font-size:.95rem;
-      cursor:pointer;
-    }
-    #conv-output {
-      margin-top:.9rem;
-      font-size:1.15rem;
-      font-weight:700;
-      color:#0f172a;
-    }
-    #conv-meta {
-      margin-top:.3rem;
-      font-size:.8rem;
-      color:#64748b;
-    }
+  .tabs button {
+    border-radius:999px;
+    border:1px solid var(--border);
+    background:#020617;
+    color:var(--muted);
+    padding:.4rem .9rem;
+    font-size:.82rem;
+    cursor:pointer;
+    white-space:nowrap;
+  }
 
-    /* Chart */
-    .chart-box {
-      height:420px;
-      border-radius:1rem;
-      overflow:hidden;
-      border:1px solid var(--border);
-    }
-    .chart-header {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:.4rem;
-      font-size:.85rem;
-      color:var(--muted);
-    }
-    .chart-header select {
-      width:auto;
-      background:#020617;
-      color:var(--text);
-      border-radius:.6rem;
-      border:1px solid var(--border);
-      padding:.3rem .6rem;
-      font-size:.8rem;
-    }
+  .tabs button.active {
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#020617;
+    font-weight:600;
+  }
 
-    /* Prices */
-    table {
-      width:100%;
-      border-collapse:collapse;
-      margin-top:.6rem;
-      font-size:.8rem;
-    }
-    th, td {
-      padding:.4rem .5rem;
-      border-bottom:1px solid #111827;
-      text-align:right;
-    }
-    th:first-child, td:first-child { text-align:left; }
+  main {
+    max-width:1100px;
+    margin:0 auto;
+    padding:1rem .9rem 3rem;
+  }
 
-    /* Calendar */
-    .calendar-wrap iframe {
-      width:100%;
-      height:800px;
-      border:none;
-      border-radius:1rem;
-      background:white;
-    }
+  section { display:none; }
+  section.active { display:block; }
 
-    @media(max-width:600px){
-      header { font-size:.85rem; }
-      .conv-wrap { margin-inline:-.2rem; }
-    }
-  </style>
+  .card {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:1rem;
+    padding:1.1rem 1.1rem 1.3rem;
+    margin-bottom:1.2rem;
+  }
+
+  .card h2 {
+    margin:0 0 .4rem;
+    font-size:1rem;
+  }
+
+  /* Converter */
+  .conv-wrap {
+    max-width:480px;
+    margin:0 auto 1.5rem;
+    background:#020617;
+    padding:1.3rem;
+    border-radius:1.3rem;
+    border:1px solid #1f2937;
+    box-shadow:0 0 25px rgba(0,0,0,0.6);
+  }
+
+  .conv-inner {
+    background:#ffffff;
+    border-radius:1rem;
+    padding:1.1rem 1.1rem 1.3rem;
+  }
+
+  .conv-inner h2 {
+    margin:0 0 .7rem;
+    font-size:1.1rem;
+    font-weight:700;
+    color:#0f172a;
+  }
+
+  label {
+    display:block;
+    font-size:.8rem;
+    font-weight:600;
+    margin-bottom:.2rem;
+    color:#475569;
+  }
+
+  input, select {
+    width:100%;
+    padding:.6rem;
+    border-radius:.7rem;
+    border:1px solid #cbd5e1;
+    font-size:.95rem;
+    background:#f8fafc;
+    color:#0f172a;
+  }
+
+  .swap-wrap {
+    display:flex;
+    justify-content:center;
+    margin:.6rem 0 .8rem;
+  }
+
+  .swap-btn {
+    display:flex;
+    align-items:center;
+    gap:.3rem;
+    border-radius:999px;
+    border:1px solid #e2e8f0;
+    padding:.3rem .85rem;
+    background:#fff;
+    cursor:pointer;
+    font-size:.8rem;
+    color:#64748b;
+  }
+
+  .btn {
+    margin-top:.8rem;
+    width:100%;
+    background:var(--accent);
+    border:none;
+    border-radius:.7rem;
+    padding:.7rem;
+    color:#020617;
+    font-weight:600;
+    font-size:.95rem;
+    cursor:pointer;
+  }
+
+  #conv-output {
+    margin-top:.9rem;
+    font-size:1.15rem;
+    font-weight:700;
+    color:#0f172a;
+  }
+
+  #conv-meta {
+    margin-top:.3rem;
+    font-size:.8rem;
+    color:#64748b;
+  }
+
+  /* Chart */
+  .chart-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:.4rem;
+    font-size:.85rem;
+    color:var(--muted);
+  }
+
+  .chart-header select {
+    width:auto;
+    background:#020617;
+    color:var(--text);
+    border-radius:.6rem;
+    border:1px solid var(--border);
+    padding:.3rem .6rem;
+    font-size:.8rem;
+  }
+
+  .chart-box {
+    height:420px;
+    border-radius:1rem;
+    overflow:hidden;
+    border:1px solid var(--border);
+  }
+
+  /* Live Prices */
+  table {
+    width:100%;
+    border-collapse:collapse;
+    margin-top:.6rem;
+    font-size:.8rem;
+  }
+
+  th, td {
+    padding:.4rem .5rem;
+    border-bottom:1px solid #111827;
+    text-align:right;
+  }
+
+  th:first-child, td:first-child { text-align:left; }
+
+  /* Calendar */
+  .calendar-wrap iframe {
+    width:100%;
+    height:800px;
+    border:none;
+    border-radius:1rem;
+    background:white;
+  }
+</style>
 </head>
+
 <body>
 
 <header>
@@ -228,120 +238,122 @@
 
 <main>
 
-  <!-- HOME / CONVERTER -->
-  <section id="home" class="active">
-    <div class="conv-wrap">
-      <div class="conv-inner">
-        <h2>Currency Converter</h2>
+<!-- HOME / CONVERTER -->
+<section id="home" class="active">
+  <div class="conv-wrap">
+    <div class="conv-inner">
+      <h2>Currency Converter</h2>
 
-        <label for="amount">Amount</label>
-        <input id="amount" type="number" value="100" />
+      <label>Amount</label>
+      <input id="amount" type="number" value="100" />
 
-        <label style="margin-top:.9rem;">From</label>
-        <select id="from">
-          <option value="EUR">EUR – Euro</option>
-          <option value="USD">USD – US Dollar</option>
-          <option value="GBP">GBP – British Pound</option>
-          <option value="JPY">JPY – Japanese Yen</option>
-          <option value="CHF">CHF – Swiss Franc</option>
-          <option value="AUD">AUD – Australian Dollar</option>
-          <option value="CAD">CAD – Canadian Dollar</option>
-          <option value="NZD">NZD – New Zealand Dollar</option>
-        </select>
+      <label style="margin-top:.9rem;">From</label>
+      <select id="from">
+        <option value="EUR">EUR – Euro</option>
+        <option value="USD">USD – US Dollar</option>
+        <option value="GBP">GBP – British Pound</option>
+        <option value="JPY">JPY – Japanese Yen</option>
+        <option value="CHF">CHF – Swiss Franc</option>
+        <option value="AUD">AUD – Australian Dollar</option>
+        <option value="CAD">CAD – Canadian Dollar</option>
+        <option value="NZD">NZD – New Zealand Dollar</option>
+      </select>
 
-        <label style="margin-top:.9rem;">To</label>
-        <select id="to">
-          <option value="USD">USD – US Dollar</option>
-          <option value="EUR">EUR – Euro</option>
-          <option value="GBP">GBP – British Pound</option>
-          <option value="JPY">JPY – Japanese Yen</option>
-          <option value="CHF">CHF – Swiss Franc</option>
-          <option value="AUD">AUD – Australian Dollar</option>
-          <option value="CAD">CAD – Canadian Dollar</option>
-          <option value="NZD">NZD – New Zealand Dollar</option>
-        </select>
+      <label style="margin-top:.9rem;">To</label>
+      <select id="to">
+        <option value="USD">USD – US Dollar</option>
+        <option value="EUR">EUR – Euro</option>
+        <option value="GBP">GBP – British Pound</option>
+        <option value="JPY">JPY – Japanese Yen</option>
+        <option value="CHF">CHF – Swiss Franc</option>
+        <option value="AUD">AUD – Australian Dollar</option>
+        <option value="CAD">CAD – Canadian Dollar</option>
+        <option value="NZD">NZD – New Zealand Dollar</option>
+      </select>
 
-        <div class="swap-wrap">
-          <button class="swap-btn" onclick="swapCurrencies()">⇅ Swap</button>
-        </div>
-
-        <button class="btn" onclick="convert()">Convert</button>
-
-        <div id="conv-output"></div>
-        <div id="conv-meta"></div>
+      <div class="swap-wrap">
+        <button class="swap-btn" onclick="swapCurrencies()">⇅ Swap</button>
       </div>
-    </div>
-  </section>
 
-  <!-- CHARTS -->
-  <section id="charts">
-    <div class="card">
-      <div class="chart-header">
-        <span id="chart-label">Chart: EURUSD</span>
-        <select id="chart-symbol" onchange="updateChart()">
-          <option value="FX:EURUSD">EURUSD</option>
-          <option value="FX:GBPUSD">GBPUSD</option>
-          <option value="FX:USDJPY">USDJPY</option>
-          <option value="FX:USDCHF">USDCHF</option>
-          <option value="FX:USDCAD">USDCAD</option>
-          <option value="FX:AUDUSD">AUDUSD</option>
-          <option value="FX:NZDUSD">NZDUSD</option>
-        </select>
-      </div>
-      <div class="chart-box">
-        <iframe id="tv-iframe"
-          src="https://s.tradingview.com/embed-widget/advanced-chart/?theme=dark&style=1&symbol=FX:EURUSD&interval=60&hide_top_toolbar=true&hide_legend=true"
-          style="width:100%;height:100%;border:none;">
-        </iframe>
-      </div>
-    </div>
-  </section>
+      <button class="btn" onclick="convert()">Convert</button>
 
-  <!-- LIVE PRICES -->
-  <section id="prices">
-    <div class="card">
-      <h2>Live Prices – FX Majors</h2>
-      <p>Auto-updates every 20 seconds (Frankfurter API, base USD).</p>
-      <table id="fx-table">
-        <tr><th>Pair</th><th>Price</th></tr>
-      </table>
+      <div id="conv-output"></div>
+      <div id="conv-meta"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CALENDAR -->
-  <section id="calendar">
-    <div class="card">
-      <h2>Economic Calendar</h2>
-      <p>TradingEconomics calendar – clean, embeddable, global.</p>
-      <div class="calendar-wrap" style="margin-top:1rem;">
-        <iframe src="https://calendar.tradingeconomics.com/"></iframe>
-      </div>
+<!-- CHARTS -->
+<section id="charts">
+  <div class="card">
+    <div class="chart-header">
+      <span id="chart-label">Chart: EURUSD</span>
+      <select id="chart-symbol" onchange="updateChart()">
+        <option value="FX:EURUSD">EURUSD</option>
+        <option value="FX:GBPUSD">GBPUSD</option>
+        <option value="FX:USDJPY">USDJPY</option>
+        <option value="FX:USDCHF">USDCHF</option>
+        <option value="FX:USDCAD">USDCAD</option>
+        <option value="FX:AUDUSD">AUDUSD</option>
+        <option value="FX:NZDUSD">NZDUSD</option>
+      </select>
     </div>
-  </section>
+
+    <div class="chart-box">
+      <iframe id="tv-iframe"
+        src="https://s.tradingview.com/embed-widget/advanced-chart/?theme=dark&style=1&symbol=FX:EURUSD&interval=60&hide_top_toolbar=true&hide_legend=true">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE PRICES -->
+<section id="prices">
+  <div class="card">
+    <h2>Live Prices – FX Majors</h2>
+    <p>Updated every 20 seconds (via /api/fx).</p>
+
+    <table id="fx-table">
+      <tr><th>Pair</th><th>Price</th></tr>
+    </table>
+  </div>
+</section>
+
+<!-- CALENDAR -->
+<section id="calendar">
+  <div class="card">
+    <h2>Economic Calendar</h2>
+    <p>TradingEconomics embed – stable and mobile-friendly.</p>
+    <div class="calendar-wrap" style="margin-top:1rem;">
+      <iframe src="https://calendar.tradingeconomics.com/"></iframe>
+    </div>
+  </div>
+</section>
 
 </main>
 
 <!-- TABS -->
 <script>
-  const tabButtons = document.querySelectorAll(".tabs button");
-  const sections = document.querySelectorAll("main section");
+const tabButtons = document.querySelectorAll(".tabs button");
+const sections = document.querySelectorAll("main section");
 
-  tabButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      tabButtons.forEach(b => b.classList.remove("active"));
-      sections.forEach(s => s.classList.remove("active"));
-      btn.classList.add("active");
-      document.getElementById(btn.dataset.tab).classList.add("active");
-    });
+tabButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    tabButtons.forEach(b => b.classList.remove("active"));
+    sections.forEach(s => s.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.tab).classList.add("active");
   });
+});
 </script>
 
-<!-- CONVERTER -->
+<!-- CONVERTER (API version) -->
 <script>
 async function convert() {
   const amount = parseFloat(document.getElementById('amount').value || "0");
   const from = document.getElementById('from').value;
   const to = document.getElementById('to').value;
+
   const out = document.getElementById('conv-output');
   const meta = document.getElementById('conv-meta');
 
@@ -350,22 +362,17 @@ async function convert() {
     meta.textContent = "";
     return;
   }
-  if (from === to) {
-    out.textContent = `${amount.toFixed(2)} ${from} = ${amount.toFixed(2)} ${to}`;
-    meta.textContent = "Same currency.";
-    return;
-  }
 
   try {
-    const url = `https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`;
-    const res = await fetch(url);
+    const res = await fetch(`/api/convert?from=${from}&to=${to}&amount=${amount}`);
     if (!res.ok) throw new Error("Bad response");
     const data = await res.json();
-    const price = data.rates[to];
-    out.textContent = `${amount.toFixed(2)} ${from} = ${price.toFixed(4)} ${to}`;
-    meta.textContent = `Rate: ${(price/amount).toFixed(6)} · Source: frankfurter.app`;
-  } catch (e) {
-    out.textContent = "Conversion error. Try again.";
+
+    const rate = data.rates[to];
+    out.textContent = `${amount.toFixed(2)} ${from} = ${rate.toFixed(4)} ${to}`;
+    meta.textContent = `Rate: ${(rate/amount).toFixed(6)} • Source: fx-shell`;
+  } catch {
+    out.textContent = "Conversion error.";
     meta.textContent = "";
   }
 }
@@ -379,60 +386,52 @@ function swapCurrencies() {
 }
 </script>
 
-<!-- CHART SWITCHER -->
+<!-- CHART -->
 <script>
 function updateChart() {
   const sel = document.getElementById('chart-symbol');
   const symbol = sel.value;
   const label = sel.options[sel.selectedIndex].text;
   document.getElementById('chart-label').textContent = "Chart: " + label;
+
   const iframe = document.getElementById('tv-iframe');
   iframe.src =
     `https://s.tradingview.com/embed-widget/advanced-chart/?theme=dark&style=1&symbol=${symbol}&interval=60&hide_top_toolbar=true&hide_legend=true`;
 }
 </script>
 
-<!-- LIVE PRICES -->
+<!-- LIVE FX PRICES (API version) -->
 <script>
 const fxPairs = ["EURUSD","GBPUSD","USDJPY","USDCHF","USDCAD","AUDUSD","NZDUSD"];
 
 async function loadFXTable() {
   try {
-    const res = await fetch("https://api.frankfurter.app/latest?base=USD");
+    const res = await fetch("/api/fx");
     if (!res.ok) throw new Error("Bad response");
+
     const data = await res.json();
     const rates = data.rates || {};
     const table = document.getElementById("fx-table");
+
     table.innerHTML = `<tr><th>Pair</th><th>Price</th></tr>`;
 
-    fxPairs.forEach(pair=>{
+    fxPairs.forEach(pair => {
       const base = pair.slice(0,3);
       const quote = pair.slice(3);
       let price;
 
-      if (base === "USD") {
-        // e.g. USDJPY = JPY rate directly
-        price = rates[quote];
-      } else if (quote === "USD") {
-        // e.g. EURUSD = 1 / EUR rate
-        price = 1 / rates[base];
-      } else {
-        // cross (not really used in this list)
-        price = (1 / rates[base]) * rates[quote];
-      }
-      if (!price) return;
+      if (base === "USD") price = rates[quote];
+      else if (quote === "USD") price = 1 / rates[base];
+      else price = (1 / rates[base]) * rates[quote];
 
-      table.innerHTML += `
-        <tr>
-          <td>${pair}</td>
-          <td>${price.toFixed(5)}</td>
-        </tr>`;
+      if (price)
+        table.innerHTML += `<tr><td>${pair}</td><td>${price.toFixed(5)}</td></tr>`;
     });
 
-  } catch(e) {
-    const t = document.getElementById("fx-table");
-    t.innerHTML = `<tr><th>Pair</th><th>Price</th></tr>
-      <tr><td colspan="2">Error loading prices.</td></tr>`;
+  } catch {
+    document.getElementById("fx-table").innerHTML =
+      `<tr><th>Pair</th><th>Price</th></tr>
+       <tr><td colspan="2">Error loading.</td></tr>`;
   }
 }
 
