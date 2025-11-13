@@ -76,11 +76,11 @@
       font-size: 1rem;
     }
 
-    /* Converter hybrid style */
+    /* Converter */
     .conv-wrap {
       background: #020617;
       border-radius: 1.3rem;
-      padding: 1.2rem;
+      padding: 1.3rem;
       border: 1px solid #1f2937;
       box-shadow: 0 0 25px rgba(0,0,0,0.6);
       max-width: 480px;
@@ -114,13 +114,11 @@
       background:#f8fafc;
       color:#0f172a;
     }
-    .row { display:flex; gap:.6rem; }
-    .row > div { flex:1; }
 
     .swap-wrap {
       display:flex;
       justify-content:center;
-      margin:.5rem 0 .7rem;
+      margin:.6rem 0 .8rem;
     }
     .swap-btn {
       display:flex;
@@ -128,7 +126,7 @@
       gap:.3rem;
       border-radius:999px;
       border:1px solid #e2e8f0;
-      padding:.35rem .8rem;
+      padding:.35rem .9rem;
       background:#fff;
       cursor:pointer;
       font-size:.8rem;
@@ -136,7 +134,7 @@
     }
 
     .btn {
-      margin-top:.7rem;
+      margin-top:.8rem;
       width:100%;
       background:var(--accent);
       border:none;
@@ -155,7 +153,7 @@
       color:#0f172a;
     }
     #conv-meta {
-      margin-top:.25rem;
+      margin-top:.3rem;
       font-size:.8rem;
       color:#64748b;
     }
@@ -198,19 +196,14 @@
       text-align:right;
     }
     th:first-child, td:first-child { text-align:left; }
-    tr td:last-child { font-variant-numeric: tabular-nums; }
 
+    /* Calendar */
     .calendar-wrap iframe {
       width:100%;
-      height:780px;
+      height:800px;
       border:none;
-      border-radius:.8rem;
+      border-radius:1rem;
       background:white;
-    }
-
-    @media(max-width:600px){
-      header { font-size:.85rem; }
-      .conv-wrap { margin-inline:-.2rem; }
     }
   </style>
 </head>
@@ -229,7 +222,7 @@
 
 <main>
 
-  <!-- HOME / CONVERTER -->
+  <!-- HOME -->
   <section id="home" class="active">
     <div class="conv-wrap">
       <div class="conv-inner">
@@ -238,39 +231,32 @@
         <label for="amount">Amount</label>
         <input id="amount" type="number" value="100" />
 
-        <div style="margin-top:.8rem;">
-          <label for="from">From</label>
-          <select id="from">
-            <option value="USD">USD – US Dollar</option>
-            <option value="EUR" selected>EUR – Euro</option>
-            <option value="GBP">GBP – British Pound</option>
-            <option value="JPY">JPY – Japanese Yen</option>
-            <option value="CHF">CHF – Swiss Franc</option>
-            <option value="AUD">AUD – Australian Dollar</option>
-            <option value="CAD">CAD – Canadian Dollar</option>
-            <option value="NZD">NZD – New Zealand Dollar</option>
-            <!-- extend with more later -->
-          </select>
-        </div>
+        <label style="margin-top:.9rem;">From</label>
+        <select id="from">
+          <option value="EUR">EUR – Euro</option>
+          <option value="USD">USD – US Dollar</option>
+          <option value="GBP">GBP – British Pound</option>
+          <option value="JPY">JPY – Japanese Yen</option>
+          <option value="CHF">CHF – Swiss Franc</option>
+          <option value="AUD">AUD – Australian Dollar</option>
+          <option value="CAD">CAD – Canadian Dollar</option>
+          <option value="NZD">NZD – New Zealand Dollar</option>
+        </select>
 
-        <div style="margin-top:.8rem;">
-          <label for="to">To</label>
-          <select id="to">
-            <option value="USD">USD – US Dollar</option>
-            <option value="EUR">EUR – Euro</option>
-            <option value="GBP">GBP – British Pound</option>
-            <option value="JPY">JPY – Japanese Yen</option>
-            <option value="CHF">CHF – Swiss Franc</option>
-            <option value="AUD">AUD – Australian Dollar</option>
-            <option value="CAD">CAD – Canadian Dollar</option>
-            <option value="NZD">NZD – New Zealand Dollar</option>
-          </select>
-        </div>
+        <label style="margin-top:.9rem;">To</label>
+        <select id="to">
+          <option value="USD">USD – US Dollar</option>
+          <option value="EUR">EUR – Euro</option>
+          <option value="GBP">GBP – British Pound</option>
+          <option value="JPY">JPY – Japanese Yen</option>
+          <option value="CHF">CHF – Swiss Franc</option>
+          <option value="AUD">AUD – Australian Dollar</option>
+          <option value="CAD">CAD – Canadian Dollar</option>
+          <option value="NZD">NZD – New Zealand Dollar</option>
+        </select>
 
         <div class="swap-wrap">
-          <button class="swap-btn" onclick="swapCurrencies()">
-            ⇅ <span>Swap</span>
-          </button>
+          <button class="swap-btn" onclick="swapCurrencies()">⇅ Swap</button>
         </div>
 
         <button class="btn" onclick="convert()">Convert</button>
@@ -292,14 +278,14 @@
           <option value="FX:USDJPY">USDJPY</option>
           <option value="FX:USDCHF">USDCHF</option>
           <option value="FX:USDCAD">USDCAD</option>
-          <option value="FX:AUDUSD">AUDUSD</option>
+          <option value="FX:AUDUSD">AUDUSD</button>
           <option value="FX:NZDUSD">NZDUSD</option>
         </select>
       </div>
+
       <div class="chart-box">
         <iframe id="tv-iframe"
-          src="https://s.tradingview.com/embed-widget/advanced-chart/?theme=dark&style=1&symbol=FX:EURUSD&interval=60&hide_top_toolbar=true&hide_legend=true"
-          style="width:100%;height:100%;border:none;">
+          src="https://s.tradingview.com/embed-widget/advanced-chart/?theme=dark&style=1&symbol=FX:EURUSD&interval=60&hide_top_toolbar=true&hide_legend=true">
         </iframe>
       </div>
     </div>
@@ -310,7 +296,7 @@
     <div class="card">
       <h2>Live Prices – FX Majors</h2>
       <p style="font-size:.85rem;color:var(--muted);">
-        Simple FX majors table via Frankfurter (EUR base).
+        Auto-updates every 20 seconds (Frankfurter API – EUR base).
       </p>
       <table id="fx-table">
         <tr><th>Pair</th><th>Price</th></tr>
@@ -323,17 +309,17 @@
     <div class="card">
       <h2>Economic Calendar</h2>
       <p style="font-size:.85rem;color:var(--muted);">
-        Powered by Investing.com — Actual · Forecast · Previous · Impact.
+        Powered by Investing.com — Full desktop version.
       </p>
-      <div class="calendar-wrap" style="margin-top:.5rem;">
-        <iframe src="https://m.investing.com/economic-calendar/"></iframe>
+      <div class="calendar-wrap" style="margin-top:1rem;">
+        <iframe src="https://www.investing.com/economic-calendar/"></iframe>
       </div>
     </div>
   </section>
 
 </main>
 
-<!-- TABS -->
+<!-- TAB SCRIPT -->
 <script>
   const tabButtons = document.querySelectorAll(".tabs button");
   const sections = document.querySelectorAll("main section");
@@ -364,7 +350,7 @@ async function convert() {
   }
   if (from === to) {
     out.textContent = `${amount.toFixed(2)} ${from} = ${amount.toFixed(2)} ${to}`;
-    meta.textContent = "Same currency conversion.";
+    meta.textContent = "Same currency.";
     return;
   }
 
@@ -373,9 +359,10 @@ async function convert() {
     const res = await fetch(url);
     if (!res.ok) throw new Error("Bad response");
     const data = await res.json();
-    const rate = data.rates[to];
-    out.textContent = `${amount.toFixed(2)} ${from} = ${rate.toFixed(4)} ${to}`;
-    meta.textContent = `Rate: ${(rate/amount).toFixed(6)} · Source: frankfurter.app`;
+
+    const price = data.rates[to];
+    out.textContent = `${amount.toFixed(2)} ${from} = ${price.toFixed(4)} ${to}`;
+    meta.textContent = `Rate: ${(price/amount).toFixed(6)} · Source: frankfurter.app`;
   } catch (e) {
     out.textContent = "Conversion error. Try again.";
     meta.textContent = "";
@@ -385,9 +372,9 @@ async function convert() {
 function swapCurrencies() {
   const fromSel = document.getElementById('from');
   const toSel = document.getElementById('to');
-  const tmp = fromSel.value;
+  const temp = fromSel.value;
   fromSel.value = toSel.value;
-  toSel.value = tmp;
+  toSel.value = temp;
 }
 </script>
 
@@ -404,31 +391,43 @@ function updateChart() {
 }
 </script>
 
-<!-- FX LIVE TABLE -->
+<!-- LIVE PRICES -->
 <script>
+const fxPairs = ["EURUSD","EURGBP","EURJPY","EURCHF","EURAUD","EURCAD","EURNZD"];
+
 async function loadFXTable() {
-  // Frankfurter supports major currencies; base EUR
-  const pairs = ["EURUSD","EURGBP","EURJPY","EURCHF","EURAUD","EURCAD","EURNZD"];
   try {
     const res = await fetch("https://api.frankfurter.app/latest?from=EUR");
-    if (!res.ok) throw new Error("Bad response");
     const data = await res.json();
     const rates = data.rates || {};
-    const t = document.getElementById("fx-table");
+    const table = document.getElementById("fx-table");
 
-    pairs.forEach(pair => {
-      const base = pair.slice(0,3); // EUR
+    table.innerHTML = `<tr><th>Pair</th><th>Price</th></tr>`;
+
+    fxPairs.forEach(pair => {
       const quote = pair.slice(3);
       const price = rates[quote];
       if (!price) return;
-      t.innerHTML += `<tr><td>${pair}</td><td>${price.toFixed(5)}</td></tr>`;
+
+      table.innerHTML += `
+        <tr>
+          <td>${pair}</td>
+          <td>${price.toFixed(5)}</td>
+        </tr>`;
     });
   } catch (e) {
-    const t = document.getElementById("fx-table");
-    t.innerHTML += `<tr><td colspan="2">Error loading prices.</td></tr>`;
+    const table = document.getElementById("fx-table");
+    table.innerHTML = `
+      <tr><th>Pair</th><th>Price</th></tr>
+      <tr><td colspan="2">Error loading prices.</td></tr>`;
   }
 }
+
+// initial load
 loadFXTable();
+
+// auto-refresh
+setInterval(loadFXTable, 20000);
 </script>
 
 </body>
